@@ -27,6 +27,9 @@ function User(name, department) {
         configurable: false
     });
 
+}
+
+
     var user = new User('Sunny', 'Engineering');
     console.log(user.department);
     user.department = 'Marketing';
@@ -35,8 +38,7 @@ function User(name, department) {
         enumerable: false
     });
     delete user.name;
-    delete user.departmentl
+    delete user.department;
     for (var prop in user) {
         console.log(prop);
     }
-}
