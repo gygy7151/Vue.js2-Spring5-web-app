@@ -1,0 +1,59 @@
+<!--메세지앱만들기
+기능은 아래와 같다.
+v 메세지 추가하기
+v 메시지 리스트 보기
+v 메시지 삭제하기
+v 특정 조건에서 추가 기능을 자동으로 비활성화하기 -->
+
+<!DOCTYPE html>
+<html>
+    <head><title>Message App</title></head>
+    <body>
+        <!--id가 app인 <div>요소를 DOM에 생성-->
+        <!--18번라인에 options객체의 el프로퍼티를 이용해 애플리케이션 앞에 언급한 <div>요소에 부착-->
+        
+        <div id ="app"></div>
+
+        <!--data객체로 무얼할지 Vue.js에 알려주는 코드 / 메시지를 표시하고 추가하는 걸 시켜보자-->
+        <!--첫번째 방법 :  options 객체의 template 프로퍼티를 활용해 인라인템플릿 문자열 추가-->
+        <!--두번째 방법 : 템플릿 부착지점에 <div id ="app"></div> 직접 넣는법-->
+            <ul>
+                <li v-for="message in messages">
+                    {{ message.text }} - {{ message.createdAt}}
+                </li>
+            </ul>
+        <!--세번째 방법 : 템플릿 마크업을 <script type="x- template" id="tmplApp">과 같은script 태그에 넣고 options 객체의 template프로퍼티 값으로 "#tmplApp"넣는것-->
+
+
+        <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
+        <script>
+            //Vue 인스턴스를 vm(ViewModel)변수에 할당
+            let vm = new Vue({
+                // el(element의 줄임말)은 여기서 사용한 '#app'과 같이 CSS선택자 또는 document.getElementById처럼 HTMLElement
+                el: '#app',
+                // 애플리케이션 데이터 모델 - 객체리터럴 사용해 data객체 추가
+                data: {
+                    message: [], //message는 배열
+                    newMessage: '' // newMessage는 문자열
+                // 위와같이 데이터 객체에 초깃값을 설정하는건 좋은 습관임
+                }
+                 // options 객체의 data 프로퍼티 값으로 일반객체를 이용하는 것외에
+                // 아래와 같이 일반객첼ㄹ 반환하는 함수도 있다.
+                // Vue.js가 항상 이 함수로 새로운 컴포넌트에 대한 새로운 데이터 모델을 생성하기, 컴포넌트 데이터구조 정의할때 함수사용하는것 필수
+                // 컴포넌트 데이터 모델 정의하는덴 일반객체 사용시 모든 인스턴스가 같은 data 객체 공유하기 때문에 안됨. 반드시 함수 사용필수임
+
+
+                // data() {
+                //     return {
+                //         message: [],
+                //         newMessage: ''
+                //         }
+                //     }
+
+            });
+
+        </script>
+    </body>
+</html>
+
+]
