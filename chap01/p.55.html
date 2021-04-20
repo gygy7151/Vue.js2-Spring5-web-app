@@ -22,6 +22,10 @@ v 특정 조건에서 추가 기능을 자동으로 비활성화하기 -->
                     {{ message.text }} - {{ message.createdAt}}
                 </li>
             </ul>
+            <form v-on:submit.prevent="addMessage">
+                <textarea v-model="newMessage" placeholder="Leave a message"></textarea>
+                <div><button type="submit">Add</button></div>
+            </form>
         <!--세번째 방법 : 템플릿 마크업을 <script type="x- template" id="tmplApp">과 같은script 태그에 넣고 options 객체의 template프로퍼티 값으로 "#tmplApp"넣는것-->
 
 
